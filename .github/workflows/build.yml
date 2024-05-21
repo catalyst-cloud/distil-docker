@@ -40,7 +40,6 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=${{ matrix.version }}
-            type=raw,pattern=${{ matrix.version }}-{{date 'YYYYMMDD[T]HHmmss[Z]'}}
       - name: Build and push Docker images
         id: push
         uses: docker/build-push-action@v5
