@@ -36,6 +36,7 @@ RUN apt-get update && \
                        python3-pip \
                        python3-virtualenv \
                        netbase \
+                       libpython3.8 \
                        git \
                        build-essential \
                        libpython3-dev && \

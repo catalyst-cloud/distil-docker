@@ -35,6 +35,7 @@ RUN apt-get update && \
     apt-get install -y python2 \
                        python-pip \
                        netbase \
+                       libpython2.7 && \
                        git \
                        build-essential \
                        libpython2-dev && \
