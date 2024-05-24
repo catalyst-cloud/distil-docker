@@ -29,6 +29,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV PATH="/opt/distil/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
 # netbase is required for the Python socket package to work.
+# libssl is required for HTTPS support in uWSGI.
 # git is required to pull git repositories using pip.
 # build-essential and libpython2-dev are required to compile some binary wheels from source.
 RUN apt-get update && \
@@ -36,16 +37,18 @@ RUN apt-get update && \
                        python-pip \
                        netbase \
                        libpython2.7 \
+                       libssl3 \
                        git \
                        build-essential \
-                       libpython2-dev && \
+                       libpython2-dev \
+                       libssl-dev && \
     python2 -m pip install virtualenv && \
     python2 -m virtualenv /opt/distil && \
     /opt/distil/bin/python -m pip install --no-cache-dir \
                                           -c "${UPPER_CONSTRAINTS_URL}" \
                                           "distil @ git+${DISTIL_REPOSITORY}@${DISTIL_VERSION}" \
                                           uwsgi && \
-    apt-get purge --auto-remove -y git build-essential libpython2-dev && \
+    apt-get purge --auto-remove -y git build-essential libpython2-dev libssl-dev && \
     groupadd --gid "${GID}" distil && \
     useradd --uid "${UID}" --gid "${GID}" --shell /bin/bash distil
 
