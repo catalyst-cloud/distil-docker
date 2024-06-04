@@ -19,7 +19,6 @@ jobs:
       matrix:
         version:
           - queens
-          - ussuri
           # TODO(callumdickinson): Enable when working.
           # - master
     permissions:

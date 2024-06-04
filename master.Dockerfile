@@ -16,8 +16,8 @@
 # Ubuntu 22.04 with Python 3.10.
 FROM ubuntu:22.04
 
-ARG DISTIL_REPOSITORY="https://review.opendev.org/x/distil.git"
-ARG DISTIL_VERSION="refs/changes/05/920005/1"
+ARG DISTIL_REPOSITORY="https://github.com/catalyst-cloud/distil.git"
+ARG DISTIL_VERSION="master"
 
 ARG UPPER_CONSTRAINTS_URL="https://releases.openstack.org/constraints/upper/master"
 
